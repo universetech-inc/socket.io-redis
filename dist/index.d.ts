@@ -112,7 +112,7 @@ export declare class RedisAdapter extends Adapter {
      * @public
      */
     remoteDisconnect(id: SocketId, close?: boolean): Promise<void>;
-    allRoomSize(): Promise<number>;
+    allRoomSize(rooms: Set<Room>): Promise<number>;
     /**
      * Get the number of subscribers of the request channel
      *

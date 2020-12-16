@@ -453,7 +453,7 @@ class RedisAdapter extends socket_io_adapter_1.Adapter {
             this.pubClient.publish(this.requestChannel, request);
         });
     }
-    async allRoomSize() {
+    async allRoomSize(rooms) {
         const requestId = uid2(6);
         const numSub = await this.getNumSub();
         debug('waiting for %d responses to "allRooms" request', numSub);
@@ -461,6 +461,7 @@ class RedisAdapter extends socket_io_adapter_1.Adapter {
             requestId,
             type: RequestType.ALL_COUNT,
             roomSize: 0,
+            rooms: [...rooms],
         });
         return new Promise((resolve, reject) => {
             const timeout = setTimeout(() => {
